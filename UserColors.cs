@@ -33,23 +33,23 @@ namespace NewGameOfLife
             get { return _selectedColor; }
             set { _selectedColor = value; }
         }
-        //private void ApplyColorButton_Click(object sender, EventArgs e)
-        //{
-        //    Form1 mainForm = Form1.instance1;
-        //    if (colorSelector.SelectedItem == "Cell Color")
-        //    {
-        //        mainForm.UserSelectedCellColor = lblSs.BackColor;
-        //    }
-        //    else if (colorSelector.SelectedItem == "Grid Color")
-        //    {
-        //        mainForm.UserSelectedGridColor = lblSs.BackColor;
-        //    }
-        //    else if (colorSelector.SelectedItem == "Background Color")
-        //    {
-        //        mainForm.UserSelectedBackgroundColor = lblSs.BackColor;
-        //    }
-        //    mainForm.DrawUniverse();
-        //}
+        private void ApplyColorButton_Click(object sender, EventArgs e)
+        {
+            Form1 mainForm = Form1.instance1;
+            if (colorSelector.SelectedItem == "Cell Color")
+            {
+                mainForm.UserSelectedCellColor = lblSs.BackColor;
+            }
+            else if (colorSelector.SelectedItem == "Grid Color")
+            {
+                mainForm.UserSelectedGridColor = lblSs.BackColor;
+            }
+            else if (colorSelector.SelectedItem == "Background Color")
+            {
+                mainForm.UserSelectedBackgroundColor = lblSs.BackColor;
+            }
+            mainForm.DrawUniverse();
+        }
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             Bitmap pbm = (Bitmap)pictureBox1.Image;
