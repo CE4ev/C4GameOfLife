@@ -35,6 +35,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtBRed = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pbxColor = new System.Windows.Forms.Panel();
             this.tbxBlue = new System.Windows.Forms.TextBox();
@@ -44,9 +45,9 @@
             this.lblSs = new System.Windows.Forms.Label();
             this.rgbValues = new System.Windows.Forms.Label();
             this.cBox = new System.Windows.Forms.ComboBox();
-            this.txtBRed = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -122,6 +123,15 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Selected Color";
+            // 
+            // txtBRed
+            // 
+            this.txtBRed.Location = new System.Drawing.Point(92, 39);
+            this.txtBRed.Name = "txtBRed";
+            this.txtBRed.Size = new System.Drawing.Size(100, 20);
+            this.txtBRed.TabIndex = 14;
+            this.txtBRed.TextChanged += new System.EventHandler(this.tbxRed_TextChanged);
+            this.txtBRed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxRed_KeyPress);
             // 
             // label5
             // 
@@ -204,18 +214,9 @@
             this.cBox.DropDown += new System.EventHandler(this.cBox_DropDown);
             this.cBox.Click += new System.EventHandler(this.cBox_Click);
             // 
-            // txtBRed
-            // 
-            this.txtBRed.Location = new System.Drawing.Point(92, 39);
-            this.txtBRed.Name = "txtBRed";
-            this.txtBRed.Size = new System.Drawing.Size(100, 20);
-            this.txtBRed.TabIndex = 14;
-            this.txtBRed.TextChanged += new System.EventHandler(this.tbxRed_TextChanged);
-            this.txtBRed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbxRed_KeyPress);
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1065, 667);
+            this.button1.Location = new System.Drawing.Point(914, 667);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(92, 23);
             this.button1.TabIndex = 10;
@@ -225,12 +226,23 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(808, 667);
+            this.button2.Location = new System.Drawing.Point(799, 667);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(90, 23);
             this.button2.TabIndex = 11;
             this.button2.Text = "Save Selected Item";
             this.button2.UseVisualStyleBackColor = true;
+            //this.button2.Click += new System.EventHandler(this.ApplyColorButton_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(1054, 667);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(108, 23);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "Restore Original Colors";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // UserColors
             // 
@@ -238,6 +250,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.Cancel;
             this.ClientSize = new System.Drawing.Size(1200, 789);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.cBox);
@@ -279,5 +292,6 @@
         private System.Windows.Forms.TextBox txtBRed;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

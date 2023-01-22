@@ -32,10 +32,14 @@ namespace NewGameOfLife
     {
         public Color cellColor = Color.Aqua;
         public Color gridColor = Color.Navy;
+        public Color backgroundColor = Color.Black;
         public int[,] Cells { get; set; }
         public int Width { get; set; }
         public int Height { get; set; }
         public bool IsToroidal { get; set; }
+        public Color UserSelectedCellColor { get; set; }
+        public Color UserSelectedGridColor { get; set; }
+        public Color UserSelectedBackgroundColor { get; set; }
         public bool[,] universe = new bool[50, 50];
         public bool[,] scratchpad = new bool[50, 50];
         public Timer timer = new Timer();
@@ -55,6 +59,23 @@ namespace NewGameOfLife
             timer.Tick += Timer_Tick;
             timer.Enabled = false;
             instance1 = this;
+            SetOriginalColors();
+        }
+        public void SetOriginalColors()
+        {
+            if (UserSelectedCellColor == null)
+            {
+                cellColor = Color.Aqua;
+            }
+            if (UserSelectedGridColor == null)
+            {
+                gridColor = Color.Navy;
+            }
+            if (UserSelectedBackgroundColor == null)
+            {
+                backgroundColor = Color.Black;
+            }
+            DrawUniverse();
         }
         public void NextGeneration()
         {
@@ -123,12 +144,12 @@ namespace NewGameOfLife
                     {
                         if (universe[row, col])
                         {
-                            g.FillRectangle(Brushes.Black, col * 10, row * 10, 10, 10);
+                            g.FillRectangle(new SolidBrush(cellColor), col * 10, row * 10, 10, 10);
                             count++;
                         }
                         else
                         {
-                            g.FillRectangle(Brushes.White, col * 10, row * 10, 10, 10);
+                            g.FillRectangle(new SolidBrush(gridColor), col * 10, row * 10, 10, 10);
                         }
                     }
                 }

@@ -13,11 +13,17 @@ namespace NewGameOfLife
     public partial class UserColors : Form
     {
         public static UserColors instance2;
+        public Color originalGridColor;
+        public Color originalCellColor;
+        public Color originalBackgroundColor;
         public UserColors()
         {
             InitializeComponent();
+            Form1 mainForm = Form1.instance1;
+            originalGridColor = mainForm.gridColor;
+            originalCellColor = mainForm.cellColor;
+            originalBackgroundColor = mainForm.BackColor;
             instance2 = this;
-            
         }
         private bool isUserInput = true;
         private bool itemsAdded = false;
@@ -27,12 +33,23 @@ namespace NewGameOfLife
             get { return _selectedColor; }
             set { _selectedColor = value; }
         }
-
-        private void ApplyColorButton_Click(object sender, EventArgs e)
-        {
-            _selectedColor = pbxColor.BackColor;
-            Form1.instance1.cellColor = _selectedColor;
-        }
+        //private void ApplyColorButton_Click(object sender, EventArgs e)
+        //{
+        //    Form1 mainForm = Form1.instance1;
+        //    if (colorSelector.SelectedItem == "Cell Color")
+        //    {
+        //        mainForm.UserSelectedCellColor = lblSs.BackColor;
+        //    }
+        //    else if (colorSelector.SelectedItem == "Grid Color")
+        //    {
+        //        mainForm.UserSelectedGridColor = lblSs.BackColor;
+        //    }
+        //    else if (colorSelector.SelectedItem == "Background Color")
+        //    {
+        //        mainForm.UserSelectedBackgroundColor = lblSs.BackColor;
+        //    }
+        //    mainForm.DrawUniverse();
+        //}
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             Bitmap pbm = (Bitmap)pictureBox1.Image;
@@ -148,18 +165,21 @@ namespace NewGameOfLife
         private void Ok_Click(object sender, EventArgs e)
         {
             Form1 mainForm = Form1.instance1;
-            string selectedItem = cBox.SelectedItem.ToString();
-            if (selectedItem == "Cells")
+            if (cBox.SelectedItem != null)
             {
-                mainForm.cellColor = pbxColor.BackColor;
-            }
-            else if (selectedItem == "Universe and Scratchpad")
-            {
-                mainForm.gridColor = pbxColor.BackColor;
-            }
-            else if (selectedItem == "Background")
-            {
-                mainForm.BackColor = pbxColor.BackColor;
+                string selectedItem = cBox.SelectedItem.ToString();
+                if (selectedItem == "Cells")
+                {
+                    mainForm.cellColor = pbxColor.BackColor;
+                }
+                else if (selectedItem == "Universe and Scratchpad")
+                {
+                    mainForm.gridColor = pbxColor.BackColor;
+                }
+                else if (selectedItem == "Background")
+                {
+                    mainForm.BackColor = pbxColor.BackColor;
+                }
             }
             Close();
         }
@@ -207,6 +227,11 @@ namespace NewGameOfLife
         private void button1_Click(object sender, EventArgs e)
         {
             clearItems();
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form1 mainForm = Form1.instance1;
+            mainForm.SetOriginalColors();
         }
     }
 }
